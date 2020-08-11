@@ -11,7 +11,7 @@
 - [ ] hook
 - [ ] react-redux
 - [ ] redux-saga
-- [ ] @emotion/core
+- [X] @emotion/core
 - [ ] react-router-dom
 - [ ] next
 - [ ] Apollo GraphQL

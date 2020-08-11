@@ -17,6 +17,11 @@ https://est-react-study.github.io/postman-junil/
   - 관련링크
     - [Create-React-App에서 Eject사용안하기(customize-cra, react-app-rewired)](https://medium.com/@jsh901220/create-react-app%EC%97%90%EC%84%9C-eject%EC%82%AC%EC%9A%A9%EC%95%88%ED%95%98%EA%B8%B0-customize-cra-react-app-rewired-10a83522ace0)
     - [react-app-rewired repository](https://github.com/timarney/react-app-rewired)
+- [X] cross-env
+  - 운영체제에 종속되지 않는 환경변수 설정을 위함.
+  - [Node.js 기반에서 환경변수 사용하기 (dotenv, cross-env)](https://velog.io/@public_danuel/process-env-on-node-js)
+  - [cross-env repository](https://www.npmjs.com/package/cross-env)
+  - [여러 개의 변수를 설정하는 방법](https://github.com/kentcdodds/cross-env/issues/15)
 - [X] typescript
 - [ ] hook
 - [ ] react-redux

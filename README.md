@@ -7,6 +7,12 @@
 ## 기술스택
 
 - [X] create-react-app
+- [X] react-app-rewired
+  - CRA의 설정을 덮어쓰기 위함
+  - eject를 사용하지 않기 위함
+  - 관련링크
+    - [Create-React-App에서 Eject사용안하기(customize-cra, react-app-rewired)](https://medium.com/@jsh901220/create-react-app%EC%97%90%EC%84%9C-eject%EC%82%AC%EC%9A%A9%EC%95%88%ED%95%98%EA%B8%B0-customize-cra-react-app-rewired-10a83522ace0)
+    - [react-app-rewired repository](https://github.com/timarney/react-app-rewired)
 - [X] typescript
 - [ ] hook
 - [ ] react-redux

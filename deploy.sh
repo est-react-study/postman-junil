@@ -4,7 +4,7 @@
 set -e
 
 # build 후 build 폴더로 이동
-yarn build
+yarn build:gh-pages
 cd build
 
 # gh-pages의 git 이력 가져오기

@@ -24,8 +24,8 @@ https://est-react-study.github.io/postman-junil/
   - [여러 개의 변수를 설정하는 방법](https://github.com/kentcdodds/cross-env/issues/15)
 - [X] typescript
 - [ ] hook
-- [ ] react-redux
-- [ ] redux-saga
+- [X] react-redux
+- [X] redux-saga
 - [X] @emotion/core
 - [ ] react-router-dom
 - [ ] next

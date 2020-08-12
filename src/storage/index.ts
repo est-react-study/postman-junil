@@ -1,10 +1,9 @@
-const getData = (key: string): any =>
-  JSON.parse(localStorage.getItem(key) || 'null');
+export default Object.freeze({
 
-const setData = (key: string, value: any) =>
-  localStorage.setItem(key, JSON.stringify(value));
+  getData: (key: string): any =>
+    JSON.parse(localStorage.getItem(key) || 'null'),
 
-export {
-  getData,
-  setData
-};
+  setData: (key: string, value: any) =>
+    localStorage.setItem(key, JSON.stringify(value))
+
+});

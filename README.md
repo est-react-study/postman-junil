@@ -23,6 +23,8 @@ https://est-react-study.github.io/postman-junil/
   - [cross-env repository](https://www.npmjs.com/package/cross-env)
   - [여러 개의 변수를 설정하는 방법](https://github.com/kentcdodds/cross-env/issues/15)
 - [X] typescript
+  - [한눈에 보는 타입스크립트](https://heropy.blog/2020/01/27/typescript/)
+  - [TypeScript and React](https://fettblog.eu/typescript-react/)
 - [ ] hook
 - [ ] react-redux
 - [ ] redux-saga
@@ -31,6 +33,7 @@ https://est-react-study.github.io/postman-junil/
   - [공식문서](https://recoiljs.org/)
   - [Recoil 알아보기](https://medium.com/humanscape-tech/recoil-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-285b29135d8e)
   - [Recoil vs Redux | The Ultimate React State Management Face-Off](https://dev.to/chandan/recoil-vs-redux-the-ultimate-react-state-management-face-off-35b)
+  - [Recoil - 또 다른 React 상태 관리 라이브러리](https://ui.toast.com/weekly-pick/ko_20200616/)
   - [사용 예제 Repository](https://github.com/chandan-reddy-k/redux-vs-recoil-example)
 - [X] @emotion/core
 - [ ] react-router-dom

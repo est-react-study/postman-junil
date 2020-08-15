@@ -1,1 +1,1 @@
-export { Histories } from './Histories';
+export { AsideContainer } from './AsideContainer';

@@ -1,5 +1,10 @@
 import { css } from "@emotion/core";
 
+export const addressStyle = css`
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+`;
+
 const commonInputStyle = css`
   border: 1px solid #bbb;
   background: #f5f5f5;

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import { App } from './components';
+import { App } from './components/App';
 import { RecoilRoot } from "recoil";
 import * as serviceWorker from './serviceWorker';
 

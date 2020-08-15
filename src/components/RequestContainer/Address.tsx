@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import { methodState, methods } from "../../stores/requestMethod";
 
@@ -10,10 +10,6 @@ export const Address: React.FC = () => {
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setMethod(target.value);
   }
-
-  useEffect(() => {
-    console.log(method);
-  });
 
   return (
     <header>

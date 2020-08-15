@@ -24,8 +24,13 @@ https://est-react-study.github.io/postman-junil/
   - [여러 개의 변수를 설정하는 방법](https://github.com/kentcdodds/cross-env/issues/15)
 - [X] typescript
 - [ ] hook
-- [X] react-redux
-- [X] redux-saga
+- [ ] react-redux
+- [ ] redux-saga
+- [X] recoil
+  - 페이스북에서 직접 만든 상태관리 라이브러리
+  - [공식문서](https://recoiljs.org/)
+  - [Recoil 알아보기](https://medium.com/humanscape-tech/recoil-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-285b29135d8e)
+  - [Recoil vs Redux | The Ultimate React State Management Face-Off](https://dev.to/chandan/recoil-vs-redux-the-ultimate-react-state-management-face-off-35b)
 - [X] @emotion/core
 - [ ] react-router-dom
 - [ ] next

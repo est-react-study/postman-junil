@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.scss';
-import {Address} from "../RequestContainer";
+import { AsideContainer } from '../AsideContainer';
+import { FormContainer } from '../FormContainer';
 
 export const App: React.FC = () => (
   <div className="App">
-    <Address />
+    <AsideContainer />
+    <FormContainer />
   </div>
 );

@@ -37,6 +37,8 @@ https://est-react-study.github.io/postman-junil/
   - [사용 예제 Repository](https://github.com/chandan-reddy-k/redux-vs-recoil-example)
 - [X] @emotion/core
   - [공식문서](https://emotion.sh/docs/introduction)
+  - [CSS 2019 - CSS IN JS](https://2019.stateofcss.com/technologies/css-in-js/)
+    - emotion이 제일 만족도가 높다.
   - [emotion을 활용한 크몽 프론트엔드 스타일링 시스템](https://brunch.co.kr/@kmongdev/17)
   - [다양한 방식의 리액트 컴포넌트 스타일링 방식](https://velog.io/@velopert/react-component-styling)
   - [emotion vs styled-component](https://ideveloper2.dev/blog/2019-05-05--thinking-about-emotion-js-vs-styled-component/)

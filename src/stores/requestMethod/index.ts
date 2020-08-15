@@ -1,21 +1,15 @@
 import {atom, RecoilValueReadOnly, selector} from "recoil";
 
-enum Method {
-  GET,
-  POST,
-  PUT,
-  PATCH,
-  DELETE
-}
+export const methods: string[] = [ 'GET', 'POST', 'PUT', 'PATCH', 'DELETE' ];
 
-export const method = atom({
-  key: 'method',
-  default: Method.GET
+export const methodState = atom({
+  key: 'methodState',
+  default: methods[0]
 });
 
-export const methodSelector: RecoilValueReadOnly<Method> = selector({
+export const methodSelector: RecoilValueReadOnly<string> = selector({
   key: 'addSelector',
   get: ({ get }) => {
-    return get(method);
+    return get(methodState);
   },
 });

@@ -1,13 +1,13 @@
 import {atom, RecoilValueReadOnly, selector} from "recoil";
 
-export const histories = atom({
-  key: 'histories',
+export const historyState = atom({
+  key: 'historyState',
   default: []
 });
 
 export const addSelector: RecoilValueReadOnly<string[]> = selector({
   key: 'addSelector',
   get: ({ get }) => {
-    return [ ...get(histories) ];
+    return [ ...get(historyState) ];
   },
 });

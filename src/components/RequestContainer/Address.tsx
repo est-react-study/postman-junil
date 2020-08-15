@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core';
 import React from "react";
 import { useRecoilState } from "recoil";
 import { methodState, methods } from "../../stores/requestMethod";
-
+import { selectStyle, addressInputStyle } from "./styles";
 
 export const Address: React.FC = () => {
 
@@ -13,10 +15,17 @@ export const Address: React.FC = () => {
 
   return (
     <header>
-      <select value={method} onChange={changeMethod}>
+      <select
+        value={method}
+        onChange={changeMethod}
+        css={selectStyle}
+      >
         { methods.map((v, key) => <option value={v} key={key}>{v}</option>) }
       </select>
-      <input />
+      <input
+        type="text"
+        css={addressInputStyle}
+      />
     </header>
   );
 }

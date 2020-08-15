@@ -36,6 +36,12 @@ https://est-react-study.github.io/postman-junil/
   - [Recoil - 또 다른 React 상태 관리 라이브러리](https://ui.toast.com/weekly-pick/ko_20200616/)
   - [사용 예제 Repository](https://github.com/chandan-reddy-k/redux-vs-recoil-example)
 - [X] @emotion/core
+  - [공식문서](https://emotion.sh/docs/introduction)
+  - [emotion을 활용한 크몽 프론트엔드 스타일링 시스템](https://brunch.co.kr/@kmongdev/17)
+  - [다양한 방식의 리액트 컴포넌트 스타일링 방식](https://velog.io/@velopert/react-component-styling)
+  - [emotion vs styled-component](https://ideveloper2.dev/blog/2019-05-05--thinking-about-emotion-js-vs-styled-component/)
+  - [Thinking about emotion js vs styled component](https://ideveloper2.dev/blog/2019-05-05--thinking-about-emotion-js-vs-styled-component/)
+    - 이 포스트가 제일 잘 정리된 것 같습니다.
 - [ ] react-router-dom
 - [ ] next
 - [ ] Apollo GraphQL

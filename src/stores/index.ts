@@ -1,0 +1,1 @@
+export { default as historyStore } from './history';

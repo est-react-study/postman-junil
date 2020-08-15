@@ -31,6 +31,7 @@ https://est-react-study.github.io/postman-junil/
   - [공식문서](https://recoiljs.org/)
   - [Recoil 알아보기](https://medium.com/humanscape-tech/recoil-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-285b29135d8e)
   - [Recoil vs Redux | The Ultimate React State Management Face-Off](https://dev.to/chandan/recoil-vs-redux-the-ultimate-react-state-management-face-off-35b)
+  - [사용 예제 Repository](https://github.com/chandan-reddy-k/redux-vs-recoil-example)
 - [X] @emotion/core
 - [ ] react-router-dom
 - [ ] next

@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.scss';
+import {Address} from "../RequestContainer";
 
 export const App: React.FC = () => (
   <div className="App">
-    React로 만드는 Postman Clone Coding
+    <Address />
   </div>
 );

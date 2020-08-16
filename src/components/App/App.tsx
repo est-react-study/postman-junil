@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.scss';
 import { AsideContainer } from '../AsideContainer';
 import { FormContainer } from '../FormContainer';
 

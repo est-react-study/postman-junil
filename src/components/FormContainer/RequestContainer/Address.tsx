@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core';
 import React from "react";
 import { useRecoilState } from "recoil";
 import { methodState, methods } from "../../../stores/requestMethod";
-import { selectStyle, addressInputStyle, addressStyle } from "./styles";
+import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 
 export const Address: React.FC = () => {
 
@@ -24,10 +24,18 @@ export const Address: React.FC = () => {
           <option value={v} key={key}>{v}</option>)
         }
       </select>
+
       <input
         type="text"
         css={addressInputStyle}
       />
+
+      <button
+        type="button"
+        css={buttonStyle}
+      >
+        Send
+      </button>
     </div>
   );
 }

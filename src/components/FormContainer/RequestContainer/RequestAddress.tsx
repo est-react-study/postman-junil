@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import React, {useState} from "react";
 import { useRecoilState } from "recoil";
-import { methodState, methods } from "../../../stores/requestMethod";
+import { methodState, methods } from "../../../stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 
 export const RequestAddress: React.FC = () => {

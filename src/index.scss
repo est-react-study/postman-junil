@@ -11,6 +11,12 @@ input, select, button, textarea, option {
   font-family: inherit;
 }
 
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .asideContainer {
   position: fixed;
   left: 0;

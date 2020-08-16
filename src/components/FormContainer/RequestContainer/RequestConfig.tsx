@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import React from "react";
-import { allResetStyle } from "../../../reset.style";
+import { allResetStyle } from "reset.style";
 import { tabStyle } from "./styles";
-import { configTabs, tabState } from "../../../stores/requestStore";
+import { configTabs, tabState } from "stores/requestStore";
 import { useRecoilState } from "recoil";
 
 export const RequestConfig: React.FC = () => {

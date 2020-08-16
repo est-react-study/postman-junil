@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { methodState, methods } from "../../../stores/requestMethod";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 
-export const Address: React.FC = () => {
+export const RequestAddress: React.FC = () => {
 
   const [ method, setMethod ] = useRecoilState(methodState);
   const [ requestURL, setRequestURL ] = useState('');
@@ -25,7 +25,7 @@ export const Address: React.FC = () => {
   }
 
   const submitRequest  = () => {
-    console.log(requestURL);
+
   }
 
   return (

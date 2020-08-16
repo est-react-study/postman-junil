@@ -1,7 +1,8 @@
 /** @jsx jsx **/
 import { css, jsx } from "@emotion/core";
 import React from "react";
-import { Address } from "./Address";
+import { RequestAddress } from "./RequestAddress";
+import { RequestConfig } from "./RequestConfig";
 
 const titleStyle = css`
   font-size: 21px;
@@ -13,6 +14,7 @@ const titleStyle = css`
 export const RequestContainer: React.FC = () => (
   <section>
     <h3 css={titleStyle}>Request</h3>
-    <Address/>
+    <RequestAddress />
+    <RequestConfig />
   </section>
 );

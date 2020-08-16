@@ -14,6 +14,7 @@ input, select, button, textarea, option {
 button {
   &:hover {
     cursor: pointer;
+    outline: none;
   }
 }
 

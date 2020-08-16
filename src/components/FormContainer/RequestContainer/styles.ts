@@ -14,6 +14,7 @@ const commonInputStyle = css`
   height: 36px;
   padding: 0 10px;
   box-sizing: border-box;
+  transition: background-color 0.15s;
   
   &:focus {
     background: #fff;
@@ -45,4 +46,9 @@ export const buttonStyle = css`
   padding: 0 10px;
   box-sizing: border-box;
   border-radius: 2px;
+  transition: background-color 0.15s;
+  
+  &:hover {
+    background: #06F;
+  }
 `;

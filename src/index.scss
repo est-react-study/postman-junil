@@ -9,6 +9,8 @@ code {
 
 input, select, button, textarea, option {
   font-family: inherit;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 button {

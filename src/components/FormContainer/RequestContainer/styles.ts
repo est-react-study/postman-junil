@@ -52,3 +52,45 @@ export const buttonStyle = css`
     background: #06F;
   }
 `;
+
+export const tabStyle = css`
+  && {
+    display: flex;
+    border-bottom: 1px dotted #ddd;
+    padding: 0 10px;
+    
+    li {
+      padding: 15px 10px;
+      position: relative;
+      color: #aaa;
+      font-size: 13px;
+      cursor: pointer;
+      transition: color 0.3s;
+      
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        height: 3px;
+        background: #06F;
+        bottom: -1px;
+        transition-property: left, right;
+        transition-duration: 0.3s;
+      }
+      
+      &:hover {
+        color: #000;
+      }
+      
+      &.active {
+        color: #000;
+        &::after {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+`;

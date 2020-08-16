@@ -18,6 +18,16 @@ export const Address: React.FC = () => {
     setRequestURL(target.value);
   }
 
+  const submitOnEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
+    if (keyCode === 13) {
+      submitRequest();
+    }
+  }
+
+  const submitRequest  = () => {
+    console.log(requestURL);
+  }
+
   return (
     <div css={addressStyle}>
       <select
@@ -34,12 +44,13 @@ export const Address: React.FC = () => {
         type="text"
         css={addressInputStyle}
         onInput={updateUrl}
-        onKeyDown={() => console.log(requestURL)}
+        onKeyDown={submitOnEnter}
       />
 
       <button
         type="button"
         css={buttonStyle}
+        onClick={submitRequest}
       >
         Send
       </button>

@@ -5,6 +5,9 @@ import { allResetStyle } from "reset.style";
 import { tabStyle } from "./styles";
 import { configTabs, tabState } from "stores/requestStore";
 import { useRecoilState } from "recoil";
+import { RequestParams } from "./RequestParams";
+import { RequestHeaders } from "./RequestHeaders";
+import { RequestBody } from "./RequestBody";
 
 export const RequestConfig: React.FC = () => {
 
@@ -23,6 +26,12 @@ export const RequestConfig: React.FC = () => {
           </li>
         )}
       </ul>
+      {
+        activeTab === 0 ? <RequestParams /> :
+        activeTab === 1 ? <RequestHeaders /> :
+        activeTab === 2 ? <RequestBody /> :
+        ''
+      }
     </div>
   )
 }

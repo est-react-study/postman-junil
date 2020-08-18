@@ -13,6 +13,7 @@ export const RequestAddress: React.FC = () => {
   const params = useRecoilValue(paramsState);
   const headers = useRecoilValue(headersState);
   const [ requestURL, setRequestURL ] = useState('');
+  const [ isDisabled, setDisabled ] = useState(true);
 
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setMethod(target.value);
@@ -20,6 +21,7 @@ export const RequestAddress: React.FC = () => {
 
   const updateUrl = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setRequestURL(target.value);
+    setDisabled(!validateURL(requestURL));
   }
 
   const submitOnEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
@@ -29,7 +31,9 @@ export const RequestAddress: React.FC = () => {
   }
 
   const submitRequest = () => {
-    console.log(validateURL(requestURL));
+    if (!validateURL(requestURL)) {
+      return setDisabled(true);
+    }
     console.log(method);
     console.log(headers);
     console.log(params);
@@ -50,7 +54,7 @@ export const RequestAddress: React.FC = () => {
       <input
         type="text"
         css={addressInputStyle}
-        onInput={updateUrl}
+        onChange={updateUrl}
         onKeyDown={submitOnEnter}
       />
 
@@ -58,6 +62,7 @@ export const RequestAddress: React.FC = () => {
         type="button"
         overrideCss={buttonStyle}
         onClick={submitRequest}
+        disabled={isDisabled}
         children="Send" />
     </div>
   );

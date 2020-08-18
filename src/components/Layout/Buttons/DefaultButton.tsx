@@ -6,14 +6,19 @@ import { IButtonProps } from "./index";
 const defaultButtonStyles = css`
   border: none;
   border-radius: 2px;
-  background: #09F;
+  background-color: #09F;
   color: #fff;
   padding: 7px 10px;
-  transition: background-color 0.15s;
+  transition-property: background-color, opacity;
+  transition-duration: 0.2s;
   box-sizing: border-box;
   
-  &:hover {
-    background: #06F;
+  &:not(:disabled):hover {
+    background-color: #06F;
+  }
+  
+  &:disabled {
+    opacity: 0.5
   }
 `;
 

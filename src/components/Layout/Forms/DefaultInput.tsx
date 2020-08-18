@@ -9,6 +9,7 @@ const defaultInputStyles = `
   border-radius: 2px;
   border: 1px solid #bbb;
   font-size: 13px;
+  box-sizing: border-box;
   
   + input,
   + button,

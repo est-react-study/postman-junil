@@ -41,7 +41,6 @@ export const buttonStyle = css`
   font-weight: bold;
   height: 36px;
   padding: 0 10px;
-  box-sizing: border-box;
 `;
 
 export const tabStyle = css`
@@ -88,6 +87,7 @@ export const tabStyle = css`
 
 export const requestTableStyles = css`
   && {
+    max-width: 1000px;
     padding: 20px;
     
     .noneData {

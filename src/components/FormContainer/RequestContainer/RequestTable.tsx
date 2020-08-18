@@ -1,10 +1,10 @@
 /** @jsx jsx **/
 import {css, jsx} from "@emotion/core";
 import React from "react";
-import { IRequestTable } from "stores/requestStore";
-import { SetterOrUpdater } from "recoil";
-import { requestTableStyles } from './styles';
-import { DefaultButton } from "components/Layout/Buttons";
+import {IRequestTable} from "stores/requestStore";
+import {SetterOrUpdater} from "recoil";
+import {requestTableStyles} from './styles';
+import {DefaultButton} from "components/Layout/Buttons";
 import {DefaultInput} from "../../Layout/Forms";
 
 interface RequestTableProps {
@@ -19,6 +19,12 @@ export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: Req
     { key: '', value: '' }
   ]);
 
+  const changeDataOfIndex = (property: string, index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newDataList: IRequestTable[] = [ ...data ];
+    newDataList[index] = {...newDataList[index], [property]: e.target.value};
+    setData(newDataList);
+  }
+
   return (
     <div css={requestTableStyles}>
       { data.length !== 0 ?
@@ -28,10 +34,18 @@ export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: Req
               <DefaultInput
                 type="text"
                 value={key}
+                onChange={changeDataOfIndex('key', index)}
+                overrideCss={css`
+                  width: calc(50% - 2.5px)
+                `}
                 placeholder="key" />
               <DefaultInput
                 type="text"
                 value={value}
+                onChange={changeDataOfIndex('value', index)}
+                overrideCss={css`
+                  width: calc(50% - 2.5px)
+                `}
                 placeholder="value" />
             </li>
           ) }

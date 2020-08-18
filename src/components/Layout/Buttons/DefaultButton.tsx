@@ -10,6 +10,7 @@ const defaultButtonStyles = css`
   color: #fff;
   padding: 7px 10px;
   transition: background-color 0.15s;
+  box-sizing: border-box;
   
   &:hover {
     background: #06F;

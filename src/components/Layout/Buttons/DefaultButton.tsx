@@ -2,6 +2,7 @@
 import { jsx, css } from "@emotion/core";
 import React from "react";
 import { IButtonProps } from "./index";
+
 const defaultButtonStyles = css`
   border: none;
   border-radius: 2px;
@@ -15,18 +16,17 @@ const defaultButtonStyles = css`
   }
 `;
 
-export const DefaultButton: React.FC<IButtonProps> = (props: IButtonProps) => {
+export const DefaultButton: React.FC<IButtonProps> = ({ overrideCss, ...props }: IButtonProps) => {
   const extendedStyles = css`
     ${defaultButtonStyles}
-    ${props.overrideCss}
+    ${overrideCss}
   `;
   return (
     <button
-      type={props.type}
-      onClick={props.onClick}
+      { ...props }
       css={extendedStyles}
     >
-      {props.value}
+      {props.children}
     </button>
   );
 }

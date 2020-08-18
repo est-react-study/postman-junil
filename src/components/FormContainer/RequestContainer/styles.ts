@@ -87,7 +87,6 @@ export const tabStyle = css`
 
 export const requestTableStyles = css`
   && {
-    max-width: 1000px;
     padding: 20px;
     
     .noneData {
@@ -98,6 +97,10 @@ export const requestTableStyles = css`
       text-align: center;
       color: #666;
       font-size: 13px;
+    }
+    
+    ul {
+      max-width: 1000px;
     }
     
     li {

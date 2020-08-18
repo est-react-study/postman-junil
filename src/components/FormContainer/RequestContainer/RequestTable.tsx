@@ -12,6 +12,10 @@ interface RequestTableProps {
   setData: SetterOrUpdater<IRequestTable[]>
 }
 
+const inputStyles = css`
+  width: calc(50% - 2.5px)  
+`;
+
 export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: RequestTableProps) => {
 
   const addData = () => setData([
@@ -35,17 +39,13 @@ export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: Req
                 type="text"
                 value={key}
                 onChange={changeDataOfIndex('key', index)}
-                overrideCss={css`
-                  width: calc(50% - 2.5px)
-                `}
+                overrideCss={inputStyles}
                 placeholder="key" />
               <DefaultInput
                 type="text"
                 value={value}
                 onChange={changeDataOfIndex('value', index)}
-                overrideCss={css`
-                  width: calc(50% - 2.5px)
-                `}
+                overrideCss={inputStyles}
                 placeholder="value" />
             </li>
           ) }

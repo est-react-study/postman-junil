@@ -36,9 +36,10 @@ export const RequestAddress: React.FC = () => {
     }
     const url = `${requestURL}${getQueryParamsOf(params)}`;
 
-    fetch(url, { headers: getHeadersOf(headers) })
+    fetch(url, {headers: getHeadersOf(headers)})
       .then(res => res.text())
-      .then(console.log);
+      .then(console.log)
+      .catch(console.error);
   }
 
   return (

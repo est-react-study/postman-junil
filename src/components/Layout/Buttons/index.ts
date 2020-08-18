@@ -5,7 +5,7 @@ export interface IButtonProps {
   type: 'button'|'reset'|'submit'
   value: string
   onClick?: MouseEventHandler<HTMLButtonElement>
-  css?: SerializedStyles
+  overrideCss?: SerializedStyles
 }
 
 export { DefaultButton } from './DefaultButton';

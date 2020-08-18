@@ -38,19 +38,10 @@ export const addressInputStyle = css`
 export const buttonStyle = css`
   margin-left: 5px;
   width: 85px;
-  border: none;
-  background: #09F;
-  color: #fff;
   font-weight: bold;
   height: 36px;
   padding: 0 10px;
   box-sizing: border-box;
-  border-radius: 2px;
-  transition: background-color 0.15s;
-  
-  &:hover {
-    background: #06F;
-  }
 `;
 
 export const tabStyle = css`

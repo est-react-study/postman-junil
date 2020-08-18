@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import { useRecoilState } from "recoil";
 import { methodState, methods } from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
+import {DefaultButton} from "../../Layout/Buttons";
 
 export const RequestAddress: React.FC = () => {
 
@@ -47,13 +48,11 @@ export const RequestAddress: React.FC = () => {
         onKeyDown={submitOnEnter}
       />
 
-      <button
+      <DefaultButton
         type="button"
-        css={buttonStyle}
+        overrideCss={buttonStyle}
         onClick={submitRequest}
-      >
-        Send
-      </button>
+        value="Send" />
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import { SerializedStyles } from "@emotion/core";
 import React from "react";
-
-export interface IButtonProps extends  React.HTMLAttributes<HTMLButtonElement> {
-  overrideCss?: SerializedStyles
-}
+import {SerializedStyles} from "@emotion/core";
 
 export { DefaultButton } from './DefaultButton';
+
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  overrideCss?: SerializedStyles
+}

@@ -99,5 +99,9 @@ export const requestTableStyles = css`
       color: #666;
       font-size: 13px;
     }
+    
+    li {
+      margin-bottom: 5px;
+    }
   }
 `;

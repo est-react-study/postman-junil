@@ -94,3 +94,19 @@ export const tabStyle = css`
     }
   }
 `;
+
+export const requestTableStyles = css`
+  && {
+    padding: 20px;
+    
+    .noneData {
+      background: #f5f5f5;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      padding: 20px 0;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+  }
+`;

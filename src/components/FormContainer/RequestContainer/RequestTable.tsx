@@ -1,6 +1,10 @@
+/** @jsx jsx **/
+import {css, jsx} from "@emotion/core";
 import React from "react";
 import { IRequestTable } from "stores/requestStore";
 import { SetterOrUpdater } from "recoil";
+import { requestTableStyles } from './styles';
+import { DefaultButton } from "components/Layout/Buttons";
 
 interface RequestTableProps {
   data: IRequestTable[],
@@ -10,7 +14,7 @@ interface RequestTableProps {
 export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: RequestTableProps) => {
 
   return (
-    <div>
+    <div css={requestTableStyles}>
       { data.length !== 0 ?
         <ul>
           { data.map(({ key, value }, index) =>
@@ -20,11 +24,11 @@ export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: Req
             </li>
           ) }
         </ul> :
-        <p>현재 등록된 파라미터가 없습니다.</p>
+        <p className="noneData">현재 등록된 파라미터가 없습니다.</p>
       }
-      <button type="button">
-        추가
-      </button>
+      <div css={css`margin-top: 10px;`}>
+        <DefaultButton type="button" value="추가" />
+      </div>
     </div>
   )
 };

@@ -13,8 +13,12 @@ const defaultButtonStyles = css`
   transition-duration: 0.2s;
   box-sizing: border-box;
   
-  &:not(:disabled):hover {
-    background-color: #06F;
+  &:not(:disabled) {
+    &:hover,
+    &:focus {
+      background-color: #06F;
+      outline: none;
+    }
   }
   
   &:disabled {

@@ -1,14 +1,17 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import React, {useState} from "react";
-import { useRecoilState } from "recoil";
-import { methodState, methods } from "stores/requestStore";
+import {useRecoilState, useRecoilValue} from "recoil";
+import { methodState, methods, paramsState, headersState } from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { DefaultButton } from "../../Layout/Buttons";
+import {validateURL} from "../../../utils";
 
 export const RequestAddress: React.FC = () => {
 
   const [ method, setMethod ] = useRecoilState(methodState);
+  const params = useRecoilValue(paramsState);
+  const headers = useRecoilValue(headersState);
   const [ requestURL, setRequestURL ] = useState('');
 
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
@@ -25,8 +28,11 @@ export const RequestAddress: React.FC = () => {
     }
   }
 
-  const submitRequest  = () => {
-
+  const submitRequest = () => {
+    console.log(validateURL(requestURL));
+    console.log(method);
+    console.log(headers);
+    console.log(params);
   }
 
   return (

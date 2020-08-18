@@ -1,4 +1,4 @@
-import {atom, RecoilState, RecoilValueReadOnly, selector} from "recoil";
+import { atom, RecoilState } from "recoil";
 
 export interface IRequestTable {
   key: string
@@ -23,15 +23,6 @@ export const headersState: RecoilState<IRequestTable[]> = atom({
   key: 'headersState',
   default: headers
 });
-export const headersSelector: RecoilValueReadOnly<{ [k: string]: string }> = selector({
-  key: 'headersSelector',
-  get: ({ get }) => get(headersState).reduce((obj: { [k: string]: string }, { key, value }) => {
-    if (![ key.trim(), value.trim() ].includes('')) {
-      obj[key] = value;
-    }
-    return obj;
-  }, {})
-})
 
 const params: IRequestTable[] = [];
 export const paramsState: RecoilState<IRequestTable[]> = atom({

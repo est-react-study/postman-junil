@@ -2,16 +2,16 @@
 import { jsx } from '@emotion/core';
 import React, {useState} from "react";
 import {useRecoilState, useRecoilValue} from "recoil";
-import { methodState, methods, paramsState, headersState } from "stores/requestStore";
+import {methodState, methods, paramsState, headersSelector} from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { DefaultButton } from "../../Layout/Buttons";
-import {validateURL} from "../../../utils";
+import { validateURL, getQueryParamsOf } from "utils";
 
 export const RequestAddress: React.FC = () => {
 
   const [ method, setMethod ] = useRecoilState(methodState);
   const params = useRecoilValue(paramsState);
-  const headers = useRecoilValue(headersState);
+  const headers = useRecoilValue(headersSelector);
   const [ requestURL, setRequestURL ] = useState('');
   const [ isDisabled, setDisabled ] = useState(true);
 
@@ -34,9 +34,11 @@ export const RequestAddress: React.FC = () => {
     if (!validateURL(requestURL)) {
       return setDisabled(true);
     }
-    console.log(method);
-    console.log(headers);
-    console.log(params);
+    const url = `${requestURL}${getQueryParamsOf(params)}`;
+
+    fetch(url, { headers })
+      .then(res => res.json())
+      .then(console.log);
   }
 
   return (

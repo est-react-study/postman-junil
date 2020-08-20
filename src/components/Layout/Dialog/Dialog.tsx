@@ -1,26 +1,34 @@
 /** @jsx jsx **/
 import {css, jsx} from "@emotion/core";
 import React from "react";
+import {IDialogProps} from "./index";
 
-const dialogStyles = css`
+const defaultDialogStyles = css`
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  background: fade-out(#000, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 100;
   
   > div {
     background-color: #fff;
+    margin: 0 auto;
   }
 `;
 
-export const Dialog: React.FC = (props) => {
+export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, wrapperCss }: IDialogProps) => {
+
+  const dialogStyles = css`
+    ${defaultDialogStyles}
+    ${overrideCss}
+  `;
+
   return (
     <div css={dialogStyles}>
-      <div>
-        { props.children }
+      <div css={wrapperCss}>
+        { children }
       </div>
     </div>
   );

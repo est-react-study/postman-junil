@@ -51,7 +51,7 @@ https://est-react-study.github.io/postman-junil/
 - [ ] history
 - [ ] rest
 - [ ] core-js
-- [ ] axios
+- [X] axios
 - [ ] formik
 - [ ] yup
 - [ ] react-table 7

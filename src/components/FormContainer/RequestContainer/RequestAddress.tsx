@@ -1,17 +1,19 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import React, {useState} from "react";
-import {useRecoilState, useRecoilValue} from "recoil";
-import {methodState, methods, paramsState, headersState} from "stores/requestStore";
+import { useRecoilState } from "recoil";
+import { methodState, methods } from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { DefaultButton } from "components/Layout/Buttons";
-import { validateURL, getQueryParamsOf, getHeadersOf } from "utils";
+import { validateURL } from "utils";
 
-export const RequestAddress: React.FC = () => {
+export interface IRequestAddressProps {
+  submitRequest: (requestURL: string) => void
+}
+
+export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }: IRequestAddressProps) => {
 
   const [ method, setMethod ] = useRecoilState(methodState);
-  const params = useRecoilValue(paramsState);
-  const headers = useRecoilValue(headersState);
   const [ requestURL, setRequestURL ] = useState('');
   const [ isDisabled, setDisabled ] = useState(true);
 
@@ -26,20 +28,15 @@ export const RequestAddress: React.FC = () => {
 
   const submitOnEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
     if (keyCode === 13) {
-      submitRequest();
+      submit();
     }
   }
 
-  const submitRequest = () => {
+  const submit = () => {
     if (!validateURL(requestURL)) {
       return setDisabled(true);
     }
-    const url = `${requestURL}${getQueryParamsOf(params)}`;
-
-    fetch(url, {headers: getHeadersOf(headers)})
-      .then(res => res.text())
-      .then(console.log)
-      .catch(console.error);
+    submitRequest(requestURL);
   }
 
   return (
@@ -64,7 +61,7 @@ export const RequestAddress: React.FC = () => {
       <DefaultButton
         type="button"
         overrideCss={buttonStyle}
-        onClick={submitRequest}
+        onClick={submit}
         disabled={isDisabled}
         children="Send" />
     </div>

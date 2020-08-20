@@ -14,20 +14,48 @@ const defaultDialogStyles = css`
   
   > div {
     background-color: #fff;
-    margin: 0 auto;
+    margin: 100px auto 0;
+    padding: 30px;
+    border-radius: 3px;
+    
+    position: relative;
   }
 `;
 
-export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, wrapperCss }: IDialogProps) => {
+const closeButtonStyles = css`
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  cursor: pointer;
+  background-color: #666;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  
+  &:hover, &:focus {
+    background-color: #000;
+    outline: none;
+  }
+`;
+
+export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 700 }: IDialogProps) => {
 
   const dialogStyles = css`
     ${defaultDialogStyles}
     ${overrideCss}
   `;
 
+  const wrapperStyles = css`
+    width: ${width}px;
+  `;
+
   return (
     <div css={dialogStyles}>
-      <div css={wrapperCss}>
+      <div css={wrapperStyles}>
+        <button css={closeButtonStyles}>×</button>
         { children }
       </div>
     </div>

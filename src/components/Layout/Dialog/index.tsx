@@ -8,4 +8,5 @@ export { Dialog } from './Dialog';
 export interface IDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   overrideCss?: SerializedStyles
   width?: number
+  opened?: boolean
 }

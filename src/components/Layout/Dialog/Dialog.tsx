@@ -1,7 +1,33 @@
 /** @jsx jsx **/
 import {css, jsx} from "@emotion/core";
-import React from "react";
+import React, {MouseEventHandler} from "react";
 import {IDialogProps} from "./index";
+
+export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 700 }: IDialogProps) => {
+
+  const dialogStyles = css`
+    ${defaultDialogStyles}
+    ${overrideCss}
+  `;
+
+  const wrapperStyles = css`
+    width: ${width}px;
+  `;
+
+  const close = () => {
+
+  }
+
+  return (
+    <div css={dialogStyles}>
+      <div css={wrapperStyles}>
+        <button css={closeButtonStyles} onClick={close}>×</button>
+        { children }
+      </div>
+    </div>
+  );
+
+}
 
 const defaultDialogStyles = css`
   position: fixed;
@@ -40,24 +66,3 @@ const closeButtonStyles = css`
     outline: none;
   }
 `;
-
-export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 700 }: IDialogProps) => {
-
-  const dialogStyles = css`
-    ${defaultDialogStyles}
-    ${overrideCss}
-  `;
-
-  const wrapperStyles = css`
-    width: ${width}px;
-  `;
-
-  return (
-    <div css={dialogStyles}>
-      <div css={wrapperStyles}>
-        <button css={closeButtonStyles}>×</button>
-        { children }
-      </div>
-    </div>
-  );
-}

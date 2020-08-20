@@ -6,6 +6,7 @@ import { methodState, methods } from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { DefaultButton } from "components/Layout/Buttons";
 import { validateURL } from "utils";
+import { Method } from "axios";
 
 export interface IRequestAddressProps {
   submitRequest: (requestURL: string) => void
@@ -18,7 +19,7 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
   const [ isDisabled, setDisabled ] = useState(true);
 
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
-    setMethod(target.value);
+    setMethod(target.value as Method);
   }
 
   const updateUrl = ({ target }: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,6 +1,6 @@
 import { IRequestTable } from "../stores/requestStore";
 
-const urlRule = /^https?:\/\/([a-zA-Z0-9가-힣._-]+\.)?[a-zA-Z0-9]+(:[0-9]{2,5})?$/
+const urlRule = /^https?:\/\/([a-zA-Z0-9가-힣._-]+\.)?[a-zA-Z0-9]+(:[0-9]{2,5})?/
 export const validateURL = (url: string) => {
   return url.length > 0 && urlRule.test(url);
 }

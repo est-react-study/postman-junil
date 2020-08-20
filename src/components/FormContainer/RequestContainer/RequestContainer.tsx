@@ -6,7 +6,8 @@ import { RequestConfig } from "./RequestConfig";
 import { Alert } from "components/Layout/Dialog";
 import { getHeadersOf, getQueryParamsOf } from "utils";
 import { useRecoilValue} from "recoil";
-import { headersState, paramsState } from "stores/requestStore";
+import {headersState, methodState, paramsState} from "stores/requestStore";
+import axios from 'axios';
 
 const titleStyle = css`
   font-size: 21px;
@@ -21,12 +22,13 @@ export const RequestContainer: React.FC = () => {
 
   const params = useRecoilValue(paramsState);
   const headers = useRecoilValue(headersState);
+  const method = useRecoilValue(methodState);
 
   const submitRequest = async (requestURL: string) => {
     const url = `${requestURL}${getQueryParamsOf(params)}`;
     try {
-      const text = await fetch(url, { headers: getHeadersOf(headers) }).then(res => res.text())
-      console.log(text);
+      const { data } = await axios({ url, method, headers: getHeadersOf(headers) });
+      console.log(data);
     } catch (e) {
       setAlertMessage(e);
     }

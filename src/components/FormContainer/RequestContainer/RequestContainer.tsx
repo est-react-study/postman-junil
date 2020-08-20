@@ -24,14 +24,15 @@ export const RequestContainer: React.FC = () => {
   const headers = useRecoilValue(headersState);
   const method = useRecoilValue(methodState);
 
-  const submitRequest = async (requestURL: string) => {
+  const submitRequest = (requestURL: string) => {
     const url = `${requestURL}${getQueryParamsOf(params)}`;
-    try {
-      const { data } = await axios({ url, method, headers: getHeadersOf(headers) });
-      console.log(data);
-    } catch (e) {
-      setAlertMessage(e);
-    }
+
+    axios({ url, method, headers: getHeadersOf(headers) })
+      .then(console.log)
+      .catch(e => {
+        console.error(e.response);
+        setAlertMessage(`${e}`);
+      });
   }
 
   return (

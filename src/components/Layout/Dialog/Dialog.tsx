@@ -1,9 +1,9 @@
 /** @jsx jsx **/
 import {css, jsx} from "@emotion/core";
-import React, {MouseEventHandler} from "react";
+import React from "react";
 import {IDialogProps} from "./index";
 
-export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 700 }: IDialogProps) => {
+export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 700, onClose }: IDialogProps) => {
 
   const dialogStyles = css`
     ${defaultDialogStyles}
@@ -14,13 +14,11 @@ export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 
     width: ${width}px;
   `;
 
-  const close = () => {
-
-  }
+  const close = () => onClose();
 
   return (
-    <div css={dialogStyles}>
-      <div css={wrapperStyles}>
+    <div css={dialogStyles} onClick={close}>
+      <div css={wrapperStyles} onClick={e => e.stopPropagation()}>
         <button css={closeButtonStyles} onClick={close}>×</button>
         { children }
       </div>
@@ -37,14 +35,16 @@ const defaultDialogStyles = css`
   top: 0;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 100;
+  cursor: pointer;
   
   > div {
     background-color: #fff;
     margin: 100px auto 0;
-    padding: 30px;
+    padding: 15px;
     border-radius: 3px;
-    
     position: relative;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.2);
+    cursor: default;
   }
 `;
 
@@ -56,8 +56,8 @@ const closeButtonStyles = css`
   cursor: pointer;
   background-color: #666;
   color: #fff;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 3px;
   transition: background-color 0.3s;
   

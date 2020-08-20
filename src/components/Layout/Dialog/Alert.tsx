@@ -1,11 +1,10 @@
 import React from "react";
+import { Dialog } from "./Dialog";
 
 export const Alert: React.FC = (props) => {
   return (
-    <div>
-      <div>
-        { props.children }
-      </div>
-    </div>
+    <Dialog>
+      { props.children }
+    </Dialog>
   );
 }

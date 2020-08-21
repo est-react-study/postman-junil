@@ -37,7 +37,7 @@ export const RequestContainer: React.FC = () => {
 
   return (
     <section>
-      <h3 css={titleStyle}>Request</h3>
+      <h2 css={titleStyle}>Request</h2>
       <RequestAddress
         submitRequest={submitRequest}
       />

@@ -4,6 +4,7 @@ import './index.scss';
 import { App } from './components/App';
 import { RecoilRoot } from "recoil";
 import * as serviceWorker from './serviceWorker';
+import 'highlight.js/styles/default.css';
 
 ReactDOM.render(
   <RecoilRoot>

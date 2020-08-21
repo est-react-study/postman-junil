@@ -1,14 +1,16 @@
 /** @jsx jsx **/
 import { css, jsx } from "@emotion/core";
 import React, {useState} from "react";
+import axios from 'axios';
 import { RequestAddress } from "./RequestAddress";
 import { RequestConfig } from "./RequestConfig";
 import { Alert } from "components/Layout/Dialog";
 import { getHeadersOf, getQueryParamsOf } from "utils";
-import {useRecoilValue, useSetRecoilState} from "recoil";
-import {headersState, methodState, paramsState} from "stores/requestStore";
-import axios from 'axios';
-import {responseState} from "../../../stores/responseStore";
+import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import { headersState, methodState, paramsState } from "stores/requestStore";
+import { responseState } from "stores/responseStore";
+import { historyState } from "stores/historyStore";
+import {HistoryService} from "../../../services";
 
 const titleStyle = css`
   font-size: 21px;
@@ -21,6 +23,7 @@ export const RequestContainer: React.FC = () => {
 
   const [alertMessage, setAlertMessage] = useState('');
   const setResponse = useSetRecoilState(responseState);
+  const [histories, setHistories] = useRecoilState(historyState);
 
   const params = useRecoilValue(paramsState);
   const headers = useRecoilValue(headersState);
@@ -31,6 +34,8 @@ export const RequestContainer: React.FC = () => {
 
     axios({ url, method, headers: getHeadersOf(headers) })
       .then(data => {
+        HistoryService.push(url);
+        setHistories(HistoryService.fetchAll());
         setResponse(data);
       })
       .catch(e => {

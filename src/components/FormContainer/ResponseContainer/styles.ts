@@ -2,6 +2,7 @@ import {css} from "@emotion/core";
 
 export const responseContainerStyles = css`
   border-top: 1px solid #ddd;
+  overflow: auto;
 `;
 
 export const responseTitleStyles = css`

@@ -7,6 +7,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+pre {
+  margin: 0;
+}
+
 input, select, button, textarea, option {
   font-family: inherit;
   vertical-align: middle;
@@ -38,4 +42,6 @@ button {
   bottom: 0;
   right: 0;
   background: #fff;
+  display: flex;
+  flex-flow: column;
 }

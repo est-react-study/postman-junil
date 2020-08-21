@@ -1,9 +1,9 @@
 export default Object.freeze({
 
-  getData: (key: string): any =>
+  get: <T>(key: string): T|null =>
     JSON.parse(localStorage.getItem(key) || 'null'),
 
-  setData: (key: string, value: any) =>
+  set: <T>(key: string, value: T) =>
     localStorage.setItem(key, JSON.stringify(value))
 
 });

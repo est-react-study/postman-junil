@@ -30,7 +30,9 @@ export const RequestContainer: React.FC = () => {
     const url = `${requestURL}${getQueryParamsOf(params)}`;
 
     axios({ url, method, headers: getHeadersOf(headers) })
-      .then(setResponse)
+      .then(data => {
+        setResponse(data);
+      })
       .catch(e => {
         console.error(e.response);
         setAlertMessage(`${e}`);

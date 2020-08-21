@@ -16,7 +16,7 @@ export const ResponseContainer: React.FC = () => {
       {
         response !== null ?
           <Highlight>
-            { JSON.stringify(response.data) }
+            { JSON.stringify(response.data, null, 4) }
           </Highlight> :
           <p>아직 Request를 보내지 않았습니다.</p>
       }

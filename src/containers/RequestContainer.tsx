@@ -12,12 +12,6 @@ import { historyState } from "stores/historyStore";
 import { HistoryService } from "../services";
 import {message} from "../components/Common/Alert";
 
-const titleStyle = css`
-  font-size: 21px;
-  margin: 0;
-  padding: 15px;
-  font-weight: 400;
-`;
 
 export const RequestContainer: React.FC = () => {
 
@@ -51,3 +45,10 @@ export const RequestContainer: React.FC = () => {
     </section>
   );
 };
+
+const titleStyle = css`
+  font-size: 21px;
+  margin: 0;
+  padding: 15px;
+  font-weight: 400;
+`;

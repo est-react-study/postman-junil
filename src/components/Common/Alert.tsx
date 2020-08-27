@@ -1,6 +1,6 @@
 /** @jsx jsx **/
 import {css, jsx} from "@emotion/core";
-import React, { ReactNode } from "react";
+import React  from "react";
 import ReactDOM from 'react-dom';
 import { Dialog } from "./Dialog";
 import { Button} from "./Button";

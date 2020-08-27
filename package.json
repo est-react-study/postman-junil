@@ -30,7 +30,9 @@
     "build": "react-app-rewired build",
     "build:gh-pages": "cross-env GH_PAGES=true PUBLIC_URL=./ react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,8 +50,17 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@storybook/addon-actions": "^6.0.19",
+    "@storybook/addon-essentials": "^6.0.19",
+    "@storybook/addon-links": "^6.0.19",
+    "@storybook/node-logger": "^6.0.19",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.19",
+    "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
     "customize-cra": "^1.0.0",
-    "react-app-rewired": "^2.1.6"
+    "react-app-rewired": "^2.1.6",
+    "react-is": "^16.13.1"
   }
 }

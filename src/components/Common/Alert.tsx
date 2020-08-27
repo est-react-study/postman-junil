@@ -27,7 +27,7 @@ export const Alert: React.FC<IAlertProps> = ({ children, onClose }: IAlertProps)
   );
 }
 
-export const open = (message: string) => {
+export const message = (message: string) => {
   document.body.appendChild(alertDom);
   const close = () => alertDom.remove();
   ReactDOM.render(

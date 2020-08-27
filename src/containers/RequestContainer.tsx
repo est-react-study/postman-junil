@@ -1,16 +1,16 @@
 /** @jsx jsx **/
 import { css, jsx } from "@emotion/core";
-import React, {useState} from "react";
+import React from "react";
 import axios from 'axios';
 import { RequestAddress } from "../components/Request/RequestAddress";
 import { RequestConfig } from "../components/Request/RequestConfig";
-import { Alert } from "components/Common";
 import { getHeadersOf, getQueryParamsOf } from "utils";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { headersState, methodState, paramsState } from "stores/requestStore";
 import { responseState } from "stores/responseStore";
 import { historyState } from "stores/historyStore";
 import { HistoryService } from "../services";
+import {message} from "../components/Common/Alert";
 
 const titleStyle = css`
   font-size: 21px;
@@ -21,7 +21,6 @@ const titleStyle = css`
 
 export const RequestContainer: React.FC = () => {
 
-  const [alertMessage, setAlertMessage] = useState('');
   const setResponse = useSetRecoilState(responseState);
   const [histories, setHistories] = useRecoilState(historyState);
 
@@ -40,22 +39,15 @@ export const RequestContainer: React.FC = () => {
       })
       .catch(e => {
         console.error(e.response);
-        setAlertMessage(`${e}`);
+        message(e.toString());
       });
   }
 
   return (
     <section>
       <h2 css={titleStyle}>Request</h2>
-      <RequestAddress
-        submitRequest={submitRequest}
-      />
-      <RequestConfig/>
-      { alertMessage.length > 0 &&
-        <Alert onClose={() => setAlertMessage('')}>
-          { alertMessage }
-        </Alert>
-      }
+      <RequestAddress submitRequest={submitRequest} />
+      <RequestConfig />
     </section>
   );
 };

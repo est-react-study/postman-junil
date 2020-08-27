@@ -2,8 +2,6 @@
 import {css, jsx, SerializedStyles} from "@emotion/core";
 import React from "react";
 
-
-
 export interface IDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   overrideCss?: SerializedStyles
   width?: number

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import { App } from './components/App';
+import { App } from './containers';
 import { RecoilRoot } from "recoil";
 import * as serviceWorker from './serviceWorker';
 import 'highlight.js/styles/default.css';

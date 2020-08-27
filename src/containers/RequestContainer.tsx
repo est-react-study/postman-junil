@@ -2,15 +2,15 @@
 import { css, jsx } from "@emotion/core";
 import React, {useState} from "react";
 import axios from 'axios';
-import { RequestAddress } from "./RequestAddress";
-import { RequestConfig } from "./RequestConfig";
-import { Alert } from "components/Layout/Dialog";
+import { RequestAddress } from "../components/Request/RequestAddress";
+import { RequestConfig } from "../components/Request/RequestConfig";
+import { Alert } from "components/Common/Dialog";
 import { getHeadersOf, getQueryParamsOf } from "utils";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { headersState, methodState, paramsState } from "stores/requestStore";
 import { responseState } from "stores/responseStore";
 import { historyState } from "stores/historyStore";
-import {HistoryService} from "../../../services";
+import { HistoryService } from "../services";
 
 const titleStyle = css`
   font-size: 21px;

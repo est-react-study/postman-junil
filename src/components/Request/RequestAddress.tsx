@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import { useRecoilState } from "recoil";
 import { methodState, methods } from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
-import { DefaultButton } from "components/Layout/Buttons";
+import { DefaultButton } from "components/Common/Buttons";
 import { validateURL } from "utils";
 import { Method } from "axios";
 

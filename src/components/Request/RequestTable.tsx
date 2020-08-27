@@ -1,11 +1,11 @@
 /** @jsx jsx **/
-import {css, jsx} from "@emotion/core";
+import { css, jsx } from "@emotion/core";
 import React from "react";
-import {IRequestTable} from "stores/requestStore";
-import {SetterOrUpdater} from "recoil";
-import {requestTableStyles} from './styles';
-import {DefaultButton} from "components/Layout/Buttons";
-import {DefaultInput} from "../../Layout/Forms";
+import { IRequestTable } from "stores/requestStore";
+import { SetterOrUpdater } from "recoil";
+import { requestTableStyles } from './styles';
+import { DefaultButton } from "components/Common/Buttons";
+import { DefaultInput } from "components/Common/Forms";
 
 interface RequestTableProps {
   data: IRequestTable[],

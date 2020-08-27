@@ -1,1 +1,0 @@
-export { AsideContainer } from './AsideContainer';

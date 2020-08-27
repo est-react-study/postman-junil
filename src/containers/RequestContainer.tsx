@@ -16,7 +16,7 @@ import {message} from "../components/Common/Alert";
 export const RequestContainer: React.FC = () => {
 
   const setResponse = useSetRecoilState(responseState);
-  const [histories, setHistories] = useRecoilState(historyState);
+  const setHistories = useSetRecoilState(historyState);
 
   const params = useRecoilValue(paramsState);
   const headers = useRecoilValue(headersState);

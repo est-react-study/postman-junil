@@ -4,8 +4,7 @@ import React from "react";
 import { IRequestTable } from "stores/requestStore";
 import { SetterOrUpdater } from "recoil";
 import { requestTableStyles } from './styles';
-import { DefaultButton } from "components/Common/Buttons";
-import { DefaultInput } from "components/Common/Forms";
+import { Button, Input } from "components/Common";
 
 interface RequestTableProps {
   data: IRequestTable[],
@@ -35,13 +34,13 @@ export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: Req
         <ul>
           { data.map(({ key, value }, index) =>
             <li key={index}>
-              <DefaultInput
+              <Input
                 type="text"
                 value={key}
                 onChange={changeDataOfIndex('key', index)}
                 overrideCss={inputStyles}
                 placeholder="key" />
-              <DefaultInput
+              <Input
                 type="text"
                 value={value}
                 onChange={changeDataOfIndex('value', index)}
@@ -53,7 +52,7 @@ export const RequestTable: React.FC<RequestTableProps> = ({ data, setData }: Req
         <p className="noneData">현재 등록된 파라미터가 없습니다.</p>
       }
       <div css={css`margin-top: 10px;`}>
-        <DefaultButton
+        <Button
           type="button"
           onClick={addData}
           children="추가" />

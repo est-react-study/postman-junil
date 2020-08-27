@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import axios from 'axios';
 import { RequestAddress } from "../components/Request/RequestAddress";
 import { RequestConfig } from "../components/Request/RequestConfig";
-import { Alert } from "components/Common/Dialog";
+import { Alert } from "components/Common";
 import { getHeadersOf, getQueryParamsOf } from "utils";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { headersState, methodState, paramsState } from "stores/requestStore";

@@ -1,7 +1,15 @@
 /** @jsx jsx **/
-import {css, jsx} from "@emotion/core";
+import {css, jsx, SerializedStyles} from "@emotion/core";
 import React from "react";
-import {IDialogProps} from "./index";
+
+
+
+export interface IDialogProps extends React.HTMLAttributes<HTMLDivElement> {
+  overrideCss?: SerializedStyles
+  width?: number
+  opened?: boolean
+  onClose: () => void
+}
 
 export const Dialog: React.FC<IDialogProps> = ({ children, overrideCss, width = 700, onClose }: IDialogProps) => {
 

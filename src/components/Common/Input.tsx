@@ -1,7 +1,6 @@
 /** @jsx jsx **/
-import {css, jsx} from "@emotion/core";
+import {css, jsx, SerializedStyles} from "@emotion/core";
 import React from "react";
-import { IInputProps } from "./index";
 
 const defaultInputStyles = `
   padding: 10px;
@@ -22,7 +21,11 @@ const defaultInputStyles = `
   }
 `;
 
-export const DefaultInput: React.FC<IInputProps> = ({ overrideCss, ...props }: IInputProps) => {
+export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  overrideCss?: SerializedStyles
+}
+
+export const Input: React.FC<IInputProps> = ({ overrideCss, ...props }: IInputProps) => {
   return (
     <input
       {...props}

@@ -1,7 +1,6 @@
 /** @jsx jsx **/
-import { jsx, css } from "@emotion/core";
+import {jsx, css, SerializedStyles} from "@emotion/core";
 import React from "react";
-import { IButtonProps } from "./index";
 
 const defaultButtonStyles = css`
   border: none;
@@ -26,7 +25,11 @@ const defaultButtonStyles = css`
   }
 `;
 
-export const DefaultButton: React.FC<IButtonProps> = ({ overrideCss, ...props }: IButtonProps) => {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  overrideCss?: SerializedStyles
+}
+
+export const Button: React.FC<IButtonProps> = ({ overrideCss, ...props }: IButtonProps) => {
   const extendedStyles = css`
     ${defaultButtonStyles}
     ${overrideCss}

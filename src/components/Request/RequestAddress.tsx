@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import { useRecoilState } from "recoil";
 import { methodState, methods } from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
-import { DefaultButton } from "components/Common/Buttons";
+import { Button } from "components/Common";
 import { validateURL } from "utils";
 import { Method } from "axios";
 
@@ -59,7 +59,7 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
         onKeyDown={submitOnEnter}
       />
 
-      <DefaultButton
+      <Button
         type="button"
         overrideCss={buttonStyle}
         onClick={submit}

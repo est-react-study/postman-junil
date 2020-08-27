@@ -2,8 +2,11 @@
 import {css, jsx} from "@emotion/core";
 import React from "react";
 import { Dialog } from "./Dialog";
-import {DefaultButton} from "../Buttons";
-import {IAlertProps} from "./index";
+import { Button} from "./Button";
+
+export interface IAlertProps extends React.HTMLAttributes<HTMLDivElement> {
+  onClose: () => void
+}
 
 export const Alert: React.FC<IAlertProps> = ({ children, onClose }: IAlertProps) => {
   return (
@@ -13,9 +16,9 @@ export const Alert: React.FC<IAlertProps> = ({ children, onClose }: IAlertProps)
         margin-top: 10px;
         text-align: right;
       `}>
-        <DefaultButton onClick={() => onClose()}>
+        <Button onClick={() => onClose()}>
           확인
-        </DefaultButton>
+        </Button>
       </div>
     </Dialog>
   );

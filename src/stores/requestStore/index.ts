@@ -1,5 +1,6 @@
-import {atom, RecoilState, selector} from "recoil";
+import {atom, RecoilState, RecoilValueReadOnly, selector} from "recoil";
 import { Method } from "axios";
+import { validateURL} from "utils";
 
 export interface IRequestTable {
   key: string
@@ -19,10 +20,11 @@ export const addressState: RecoilState<string> = atom({
   default: ''
 });
 
-export const addressValid = selector({
-  key: 'addressValid',
+export const addressValidState: RecoilValueReadOnly<boolean> = selector({
+  key: 'addressValidState',
   get: ({ get }) => {
-
+    const address = get(addressState);
+    return !validateURL(address)
   }
 })
 

@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import React, {useState} from "react";
-import { useRecoilState } from "recoil";
-import {methodState, methods, addressState} from "stores/requestStore";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {methodState, methods, addressState, addressValidState} from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { Button } from "components/Common";
-import { validateURL } from "utils";
 import { Method } from "axios";
 
 export interface IRequestAddressProps {
@@ -15,8 +14,8 @@ export interface IRequestAddressProps {
 export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }: IRequestAddressProps) => {
 
   const [ method, setMethod ] = useRecoilState(methodState);
-  const [ isDisabled, setDisabled ] = useState(true);
   const [ requestAddress, setRequestAddress ] = useRecoilState(addressState);
+  const addressValid: boolean = useRecoilValue(addressValidState);
 
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setMethod(target.value as Method);
@@ -24,21 +23,13 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
 
   const changeAddress = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setRequestAddress(target.value);
-    setDisabled(!validateURL(requestAddress));
   }
 
-  const submitOnEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
-    if (keyCode === 13) {
-      submit();
-    }
+  const submitOnEnter = ({ key }: React.KeyboardEvent<HTMLInputElement>) => {
+    if (key === 'Enter') submit();
   }
 
-  const submit = () => {
-    if (!validateURL(requestAddress)) {
-      return setDisabled(true);
-    }
-    submitRequest(requestAddress);
-  }
+  const submit = () => submitRequest(requestAddress);
 
   return (
     <div css={addressStyle}>
@@ -64,7 +55,7 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
         type="button"
         overrideCss={buttonStyle}
         onClick={submit}
-        disabled={isDisabled}
+        disabled={addressValid}
         children="Send" />
     </div>
   );

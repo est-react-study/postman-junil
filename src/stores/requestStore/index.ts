@@ -1,6 +1,5 @@
-import {atom, RecoilState, RecoilValueReadOnly, selector} from "recoil";
+import { atom, RecoilState } from "recoil";
 import { Method } from "axios";
-import { validateURL} from "utils";
 
 export interface IRequestTable {
   key: string

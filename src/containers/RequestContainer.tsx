@@ -5,7 +5,7 @@ import axios from 'axios';
 import { RequestAddress } from "../components/Request/RequestAddress";
 import { RequestConfig } from "../components/Request/RequestConfig";
 import { getHeadersOf, getQueryParamsOf } from "utils";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { headersState, methodState, paramsState } from "stores/requestStore";
 import { responseState } from "stores/responseStore";
 import { historyState } from "stores/historyStore";

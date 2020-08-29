@@ -14,6 +14,11 @@ export const methodState: RecoilState<Method> = atom({
   default: methods[0]
 });
 
+export const addressState: RecoilState<string> = atom({
+  key: 'addressState',
+  default: ''
+});
+
 export const tabState: RecoilState<number> = atom({
   key: 'tabState',
   default: 0

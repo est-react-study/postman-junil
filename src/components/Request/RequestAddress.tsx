@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import React, {useState} from "react";
-import {useRecoilState, useRecoilValue} from "recoil";
-import {methodState, methods, addressState, addressValidState} from "stores/requestStore";
+import React, {useMemo} from "react";
+import {useRecoilState} from "recoil";
+import {methodState, methods, addressState} from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { Button } from "components/Common";
 import { Method } from "axios";
+import {validateURL} from "../../utils";
 
 export interface IRequestAddressProps {
   submitRequest: (requestURL: string) => void
@@ -15,7 +16,7 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
 
   const [ method, setMethod ] = useRecoilState(methodState);
   const [ requestAddress, setRequestAddress ] = useRecoilState(addressState);
-  const addressValid: boolean = useRecoilValue(addressValidState);
+  const addressValid: boolean = useMemo(() => !validateURL(requestAddress),  [ requestAddress ]);
 
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setMethod(target.value as Method);

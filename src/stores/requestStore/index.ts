@@ -20,13 +20,6 @@ export const addressState: RecoilState<string> = atom({
   default: ''
 });
 
-export const addressValidState: RecoilValueReadOnly<boolean> = selector({
-  key: 'addressValidState',
-  get: ({ get }) => {
-    const address = get(addressState);
-    return !validateURL(address)
-  }
-})
 
 export const tabState: RecoilState<number> = atom({
   key: 'tabState',

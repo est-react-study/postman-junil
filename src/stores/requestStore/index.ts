@@ -1,4 +1,4 @@
-import { atom, RecoilState } from "recoil";
+import {atom, RecoilState, selector} from "recoil";
 import { Method } from "axios";
 
 export interface IRequestTable {
@@ -18,6 +18,13 @@ export const addressState: RecoilState<string> = atom({
   key: 'addressState',
   default: ''
 });
+
+export const addressValid = selector({
+  key: 'addressValid',
+  get: ({ get }) => {
+
+  }
+})
 
 export const tabState: RecoilState<number> = atom({
   key: 'tabState',

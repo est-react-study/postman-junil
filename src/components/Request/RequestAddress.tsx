@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 import React, {useState} from "react";
 import { useRecoilState } from "recoil";
-import { methodState, methods } from "stores/requestStore";
+import {methodState, methods, addressState} from "stores/requestStore";
 import { selectStyle, addressInputStyle, addressStyle, buttonStyle } from "./styles";
 import { Button } from "components/Common";
 import { validateURL } from "utils";
@@ -15,16 +15,16 @@ export interface IRequestAddressProps {
 export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }: IRequestAddressProps) => {
 
   const [ method, setMethod ] = useRecoilState(methodState);
-  const [ requestURL, setRequestURL ] = useState('');
   const [ isDisabled, setDisabled ] = useState(true);
+  const [ requestAddress, setRequestAddress ] = useRecoilState(addressState);
 
   const changeMethod = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
     setMethod(target.value as Method);
   }
 
-  const updateUrl = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setRequestURL(target.value);
-    setDisabled(!validateURL(requestURL));
+  const changeAddress = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setRequestAddress(target.value);
+    setDisabled(!validateURL(requestAddress));
   }
 
   const submitOnEnter = ({ keyCode }: React.KeyboardEvent<HTMLInputElement>) => {
@@ -34,10 +34,10 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
   }
 
   const submit = () => {
-    if (!validateURL(requestURL)) {
+    if (!validateURL(requestAddress)) {
       return setDisabled(true);
     }
-    submitRequest(requestURL);
+    submitRequest(requestAddress);
   }
 
   return (
@@ -55,8 +55,9 @@ export const RequestAddress: React.FC<IRequestAddressProps> = ({ submitRequest }
       <input
         type="text"
         css={addressInputStyle}
-        onChange={updateUrl}
+        onChange={changeAddress}
         onKeyDown={submitOnEnter}
+        value={requestAddress}
       />
 
       <Button

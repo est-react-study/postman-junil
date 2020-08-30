@@ -1,6 +1,7 @@
+/** @jsx jsx **/
+import {css, jsx} from "@emotion/core";
 import React from "react";
 import Highlight from "react-highlight";
-import {css} from "@emotion/core";
 import {AxiosResponse} from "axios";
 
 export interface IResponseBodyProps {
@@ -9,7 +10,7 @@ export interface IResponseBodyProps {
 
 export const ResponseBody: React.FC<IResponseBodyProps> = ({ response }: IResponseBodyProps) => {
   return (
-    <>
+    <React.Fragment>
       {
         response ?
           <Highlight>
@@ -17,7 +18,7 @@ export const ResponseBody: React.FC<IResponseBodyProps> = ({ response }: IRespon
           </Highlight> :
           <p css={noneBlockStyles}>아직 Request를 보내지 않았습니다.</p>
       }
-    </>
+    </React.Fragment>
   );
 }
 

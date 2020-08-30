@@ -53,8 +53,8 @@ export const Histories: React.FC = () => {
       { histories.length > 0 ?
         <ul>
           {histories.map((v, key) => (
-            <li key={key} onClick={() => setRequestAddress(v)}>
-              {v}
+            <li key={key} onClick={() => setRequestAddress(v.url)}>
+              {v.url}
             </li>
           ))}
         </ul> :

@@ -13,12 +13,12 @@ export const Histories: React.FC = () => {
   const setRequestAddress = useSetRecoilState(addressState);
   const historyByDate = useMemo(function () {
     const historyGroup = histories.reduce((obj, history) => {
-      const YMD = dateFormat('Y-M-D', history.createdAt);
+      const YMD = dateFormat('M/D(w)', history.createdAt);
       obj[YMD] = obj[YMD] || [];
       obj[YMD].push(history);
       return obj;
     }, {} as { [k: string]: History[] });
-    return Object.entries(historyGroup).sort((a, b) => b[0] > a[0] ? 1 : -1);
+    return Object.entries(historyGroup).sort(([ nowDate ], [ nextDate ]) => nextDate > nowDate ? 1 : -1);
   }, [ histories ]);
 
   return (
@@ -26,16 +26,16 @@ export const Histories: React.FC = () => {
       <h2 css={titleStyle}>History</h2>
       { historyByDate.length > 0 ?
         historyByDate.map(([ ymd, histories ], key) => (
-          <div>
-            <h3>{ymd}</h3>
-            <ul>
+          <dl>
+            <dt>{ymd}</dt>
+            <dd>
               {histories.map((v, key) => (
-                <li key={key} onClick={() => setRequestAddress(v.url)}>
+                <p key={key} onClick={() => setRequestAddress(v.url)}>
                   {v.url}
-                </li>
+                </p>
               ))}
-            </ul>
-          </div>
+            </dd>
+          </dl>
         )) :
         <p css={noneStyles}>검색 내역이 없습니다.</p>
       }
@@ -44,23 +44,29 @@ export const Histories: React.FC = () => {
 }
 
 const historiesStyle = css`
-  ul, li {
-    list-style: none;
-  }
-  
-  ul {
+  dl {
     margin: 0;
     padding: 0;
+    letter-spacing: -0.5px;
+    border-bottom: 1px dotted #ddd;
+  }  
+  dt {
+    font-size: 15px;
+    padding: 10px;
+    font-weight: 600;
+    color: #06F;
   }
-  
-  li {
-    word-break: break-all;
+  dd {
     margin: 0;
-    padding: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    &:hover {
-      background: #eff;
+    p {
+      word-break: break-all;
+      margin: 0;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 13px;
+      &:hover {
+        background: #eff;
+      }
     }
   }
 `;

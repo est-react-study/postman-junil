@@ -16,6 +16,7 @@ export const Histories: React.FC = () => {
       const YMD = dateFormat('M/D(w)', history.createdAt);
       obj[YMD] = obj[YMD] || [];
       obj[YMD].push(history);
+      obj[YMD].sort((a, b) => b.createdAt! - a.createdAt!);
       return obj;
     }, {} as { [k: string]: History[] });
     return Object.entries(historyGroup).sort(([ nowDate ], [ nextDate ]) => nextDate > nowDate ? 1 : -1);
@@ -68,17 +69,22 @@ const historiesStyle = css`
       font-size: 13px;
       color: #666;
       display: flex;
+      align-items: center;
+      font-family: arial;      
+      
       &:hover {
         background: #eff;
       }
       
       > strong {
+        font-size: 11px;
         color: #06F;
-        width: 40px;
+        width: 30px;
       }
       
       > span {
-        width: calc(100% - 40px);
+        width: calc(100% - 30px);
+        letter-spacing: 0;
       }
     }
   }

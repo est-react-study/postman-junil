@@ -1,8 +1,8 @@
 import { atom, RecoilState } from "recoil";
 import { HistoryService } from "services";
-import { History } from 'model/History';
+import { RequestHistory } from 'model/RequestHistory';
 
-export const historyState: RecoilState<History[]> = atom({
+export const historyState: RecoilState<RequestHistory[]> = atom({
   key: 'historyState',
   default: HistoryService.fetchAll()
 });

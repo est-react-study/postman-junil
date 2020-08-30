@@ -1,30 +1,18 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import React, { useMemo } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { historyState } from "stores/historyStore";
-import { addressState } from "stores/requestStore";
-import { dateFormat } from "utils";
-import { History } from "model/History";
+import React from "react";
+import { SetterOrUpdater } from "recoil";
+import { RequestHistory } from "model/RequestHistory";
 
-export const Histories: React.FC = () => {
+export interface IHistoriesProps {
+  historyByDate: [string, RequestHistory[]][]
+  setRequestAddress: SetterOrUpdater<string>
+}
 
-  const histories = useRecoilValue(historyState);
-  const setRequestAddress = useSetRecoilState(addressState);
-  const historyByDate = useMemo(function () {
-    const historyGroup = histories.reduce((obj, history) => {
-      const YMD = dateFormat('M/D(w)', history.createdAt);
-      obj[YMD] = obj[YMD] || [];
-      obj[YMD].push(history);
-      obj[YMD].sort((a, b) => b.createdAt! - a.createdAt!);
-      return obj;
-    }, {} as { [k: string]: History[] });
-    return Object.entries(historyGroup).sort(([ nowDate ], [ nextDate ]) => nextDate > nowDate ? 1 : -1);
-  }, [ histories ]);
-
-  return (
-    <section css={historiesStyle}>
-      <h2 css={titleStyle}>History</h2>
+export const Histories: React.FC<IHistoriesProps> = ({ historyByDate, setRequestAddress }: IHistoriesProps) => (
+  <section css={historiesStyle}>
+    <h2 css={titleStyle}>History</h2>
+    <div css={historiesWrapperStyles}>
       { historyByDate.length > 0 ?
         historyByDate.map(([ ymd, histories ], key) => (
           <dl key={key}>
@@ -43,11 +31,12 @@ export const Histories: React.FC = () => {
         )) :
         <p css={noneStyles}>검색 내역이 없습니다.</p>
       }
-    </section>
-  );
-}
+    </div>
+  </section>
+);
 
 const historiesStyle = css`
+  height: 100%;  
   dl {
     margin: 0;
     padding: 0;
@@ -88,6 +77,11 @@ const historiesStyle = css`
       }
     }
   }
+`;
+
+const historiesWrapperStyles = css`
+  overflow: auto;
+  height: calc(100% - 56px)
 `;
 
 const titleStyle = css`

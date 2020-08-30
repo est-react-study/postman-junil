@@ -1,4 +1,7 @@
+import { Method } from "axios";
+
 export interface History {
   url: string
-  createdAt: number
+  createdAt?: number
+  method: Method
 }

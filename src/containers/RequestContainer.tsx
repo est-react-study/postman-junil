@@ -27,7 +27,7 @@ export const RequestContainer: React.FC = () => {
 
     axios({ url, method, headers: getHeadersOf(headers) })
       .then(data => {
-        HistoryService.push({ url, createdAt: Date.now() });
+        HistoryService.push({ url, method });
         setHistories(HistoryService.fetchAll());
         setResponse(data);
       })

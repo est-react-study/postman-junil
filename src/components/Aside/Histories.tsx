@@ -26,12 +26,15 @@ export const Histories: React.FC = () => {
       <h2 css={titleStyle}>History</h2>
       { historyByDate.length > 0 ?
         historyByDate.map(([ ymd, histories ], key) => (
-          <dl>
+          <dl key={key}>
             <dt>{ymd}</dt>
             <dd>
               {histories.map((v, key) => (
-                <p key={key} onClick={() => setRequestAddress(v.url)}>
-                  {v.url}
+                <p key={key}>
+                  <strong>{v.method}</strong>
+                  <span onClick={() => setRequestAddress(v.url)}>
+                    {v.url}
+                  </span>
                 </p>
               ))}
             </dd>
@@ -52,9 +55,8 @@ const historiesStyle = css`
   }  
   dt {
     font-size: 15px;
-    padding: 10px;
+    padding: 5px 10px;
     font-weight: 600;
-    color: #06F;
   }
   dd {
     margin: 0;
@@ -64,8 +66,19 @@ const historiesStyle = css`
       padding: 5px 10px;
       cursor: pointer;
       font-size: 13px;
+      color: #666;
+      display: flex;
       &:hover {
         background: #eff;
+      }
+      
+      > strong {
+        color: #06F;
+        width: 40px;
+      }
+      
+      > span {
+        width: calc(100% - 40px);
       }
     }
   }

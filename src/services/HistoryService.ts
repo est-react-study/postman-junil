@@ -15,7 +15,7 @@ export default Object.freeze({
 
   push (history: History) {
     const histories: History[] = this.fetchAll();
-    histories.push(history);
+    histories.push({ ...history, createdAt: Date.now() });
     this.put(histories);
   },
 

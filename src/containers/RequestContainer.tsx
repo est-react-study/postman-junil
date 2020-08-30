@@ -24,7 +24,7 @@ export const RequestContainer: React.FC = () => {
 
   const submitRequest = (requestURL: string) => {
     const url = `${requestURL}${getQueryParamsOf(params)}`;
-
+    setResponse(undefined);
     axios({ url, method, headers: getHeadersOf(headers) })
       .then(data => {
         HistoryService.push({ url, method });

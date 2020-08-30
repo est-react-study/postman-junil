@@ -1,9 +1,47 @@
 /** @jsx jsx */
-import {css, jsx} from "@emotion/core";
-import React from "react";
-import {useRecoilValue, useSetRecoilState} from "recoil";
-import {historyState} from "../../stores/historyStore";
-import {addressState} from "../../stores/requestStore";
+import { css, jsx } from "@emotion/core";
+import React, { useMemo } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { historyState } from "stores/historyStore";
+import { addressState } from "stores/requestStore";
+import { dateFormat } from "utils";
+import { History } from "model/History";
+
+export const Histories: React.FC = () => {
+
+  const histories = useRecoilValue(historyState);
+  const setRequestAddress = useSetRecoilState(addressState);
+  const historyByDate = useMemo(function () {
+    const historyGroup = histories.reduce((obj, history) => {
+      const YMD = dateFormat('Y-M-D', history.createdAt);
+      obj[YMD] = obj[YMD] || [];
+      obj[YMD].push(history);
+      return obj;
+    }, {} as { [k: string]: History[] });
+    return Object.entries(historyGroup).sort((a, b) => b[0] > a[0] ? 1 : -1);
+  }, [ histories ]);
+
+  return (
+    <section css={historiesStyle}>
+      <h2 css={titleStyle}>History</h2>
+      { historyByDate.length > 0 ?
+        historyByDate.map(([ ymd, histories ], key) => (
+          <div>
+            <h3>{ymd}</h3>
+            <ul>
+              {histories.map((v, key) => (
+                <li key={key} onClick={() => setRequestAddress(v.url)}>
+                  {v.url}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )) :
+        <p css={noneStyles}>검색 내역이 없습니다.</p>
+      }
+    </section>
+  );
+}
 
 const historiesStyle = css`
   ul, li {
@@ -40,26 +78,3 @@ const noneStyles = css`
   font-size: 13px;
   color: #666;
 `;
-
-
-export const Histories: React.FC = () => {
-  const histories = useRecoilValue(historyState);
-
-  const setRequestAddress = useSetRecoilState(addressState);
-
-  return (
-    <section css={historiesStyle}>
-      <h2 css={titleStyle}>History</h2>
-      { histories.length > 0 ?
-        <ul>
-          {histories.map((v, key) => (
-            <li key={key} onClick={() => setRequestAddress(v.url)}>
-              {v.url}
-            </li>
-          ))}
-        </ul> :
-        <p css={noneStyles}>검색 내역이 없습니다.</p>
-      }
-    </section>
-  );
-}

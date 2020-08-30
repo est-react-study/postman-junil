@@ -9,14 +9,15 @@ export interface IResponseBodyProps {
 }
 
 export const ResponseBody: React.FC<IResponseBodyProps> = ({ response }: IResponseBodyProps) => {
+  const responseBody = response?.headers['content-type'].includes('application/json')
+                        ? JSON.stringify(response?.data, null, 4)
+                        : response?.data;
   return (
     <React.Fragment>
       {
-        response ?
-          <Highlight>
-            { JSON.stringify(response.data, null, 4) }
-          </Highlight> :
-          <p css={noneBlockStyles}>아직 Request를 보내지 않았습니다.</p>
+        response
+          ? <Highlight> {responseBody} </Highlight>
+          : <p css={noneBlockStyles}>아직 Request를 보내지 않았습니다.</p>
       }
     </React.Fragment>
   );

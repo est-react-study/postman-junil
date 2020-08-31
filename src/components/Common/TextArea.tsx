@@ -15,7 +15,7 @@ const getStyles = (override?: SerializedStyles, width?: string, height?: string)
   background: #fff;
   
   &:invalid {
-    background: #f5f5f5;
+    background: #fee;
   }
   
   &:focus {

@@ -1,6 +1,6 @@
 /** @jsx jsx **/
 import { css, jsx } from "@emotion/core";
-import React from "react";
+import React, {useState} from "react";
 import axios from 'axios';
 import { RequestAddress } from "../components/Request/RequestAddress";
 import { RequestConfig } from "../components/Request/RequestConfig";
@@ -21,6 +21,8 @@ export const RequestContainer: React.FC = () => {
   const params = useRecoilValue(paramsState);
   const headers = useRecoilValue(headersState);
   const method = useRecoilValue(methodState);
+
+  const [ requestBody, setRequestBody ] = useState('');
 
   const submitRequest = (requestURL: string) => {
     const url = `${requestURL}${getQueryParamsOf(params)}`;

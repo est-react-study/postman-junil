@@ -14,12 +14,11 @@ import { message } from "components/Common/Alert";
 
 const getJSON = (text: string) => {
   try {
-    return JSON.parse(text);
+    return JSON.parse(text || 'null');
   } catch (e) {
-    throw 'JSON 형식이 아닙니다.';
+    throw new Error('JSON 형식이 아닙니다.');
   }
 }
-
 
 export const RequestContainer: React.FC = () => {
 

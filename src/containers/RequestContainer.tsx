@@ -6,11 +6,19 @@ import { RequestAddress } from "../components/Request/RequestAddress";
 import { RequestConfig } from "../components/Request/RequestConfig";
 import { getHeadersOf, getQueryParamsOf } from "utils";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import {headersState, methodState, paramsState, requestBodyState} from "stores/requestStore";
+import { headersState, methodState, paramsState, requestBodyState } from "stores/requestStore";
 import { responseState } from "stores/responseStore";
 import { historyState } from "stores/historyStore";
-import { HistoryService } from "../services";
-import {message} from "../components/Common/Alert";
+import { HistoryService } from "services";
+import { message } from "components/Common/Alert";
+
+const getJSON = (text: string) => {
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    throw 'JSON 형식이 아닙니다.';
+  }
+}
 
 
 export const RequestContainer: React.FC = () => {
@@ -23,22 +31,21 @@ export const RequestContainer: React.FC = () => {
   const method = useRecoilValue(methodState);
   const body = useRecoilValue(requestBodyState);
 
-  const submitRequest = (requestURL: string) => {
+  const submitRequest = async (requestURL: string) => {
     const url = `${requestURL}${getQueryParamsOf(params)}`;
-    const data = ['post', 'put', 'patch'].includes(method.toLocaleLowerCase())
-                  ? JSON.parse(body)
-                  : undefined;
-    setResponse(undefined);
-    axios({ url, method, headers: getHeadersOf(headers), data })
-      .then(data => {
-        HistoryService.push({ url, method });
-        setHistories(HistoryService.fetchAll());
-        setResponse(data);
-      })
-      .catch(e => {
-        console.error(e.response);
-        message(e.toString());
-      });
+    try {
+      const data = ['post', 'put', 'patch'].includes(method.toLocaleLowerCase())
+        ? getJSON(body)
+        : undefined;
+      setResponse(undefined);
+      const result = await axios({url, method, headers: getHeadersOf(headers), data})
+      HistoryService.push({url, method});
+      setHistories(HistoryService.fetchAll());
+      setResponse(data);
+    } catch (e) {
+      console.error(e.response);
+      message(e.toString());
+    }
   }
 
   return (

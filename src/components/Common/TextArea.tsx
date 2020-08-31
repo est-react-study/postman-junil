@@ -12,6 +12,11 @@ const getStyles = (override?: SerializedStyles, width?: string, height?: string)
   box-sizing: border-box;
   width: ${width || '100%'};
   height: ${height || '100%'};
+  background: #fff;
+  
+  &:invalid {
+    background: #f5f5f5;
+  }
   
   &:focus {
     outline: none;

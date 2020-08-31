@@ -36,3 +36,8 @@ export const paramsState: RecoilState<IRequestTable[]> = atom({
   key: 'paramsState',
   default: params
 });
+
+export const requestBodyState: RecoilState<string> = atom({
+  key: 'requestBodyState',
+  default: ''
+})

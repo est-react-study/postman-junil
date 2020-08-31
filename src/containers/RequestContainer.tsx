@@ -41,7 +41,7 @@ export const RequestContainer: React.FC = () => {
       const result = await axios({url, method, headers: getHeadersOf(headers), data})
       HistoryService.push({url, method});
       setHistories(HistoryService.fetchAll());
-      setResponse(data);
+      setResponse(result);
     } catch (e) {
       console.error(e.response);
       message(e.toString());
